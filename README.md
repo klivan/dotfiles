@@ -10,7 +10,7 @@ mkdir -p ~/.config/nvim
 mv .vim .vim.old
 mv .config/nvim .config/nvim-old
 
-git clone https://github.com/klivan/dotfiles2 .
+git clone https://github.com/klivan/dotfiles2
 ln -s ~/dotfiles2/.vim .
 ln -s ~/dotfiles2/.config/nvim ~/.config/nvim
 
