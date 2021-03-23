@@ -91,6 +91,9 @@ Plugin 'majutsushi/tagbar'
 " IdentLine shows a vertical line on indentation
 Plugin 'Yggdroot/indentLine' " -- draw vertical line on indentation
 
+" VimWiki is a personal wiki for Vim
+Plugin 'vimwiki/vimwiki'
+
 " Python
 " @TODO: Test and configure
 " Plugin 'dense-analysis/ale'

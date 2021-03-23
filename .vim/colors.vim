@@ -26,4 +26,4 @@ let g:badwolf_tabline = 3
 
 colorscheme badwolf
 hi Comment guifg=#5C6370 ctermfg=59
-hi Comment cterm=italic
+hi Comment cterm=italic gui=italic

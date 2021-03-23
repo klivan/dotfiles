@@ -399,3 +399,6 @@ bind-key -n 'M-`' run "tmux split-window  -c '#{pane_current_path}' -p 40 'tmux 
 
 bind-key n command-prompt -p "send pane to:"  "join-pane    -t ':%%'"
 bind-key N command-prompt -p "send pane to:"  "join-pane -h -t ':%%'"
+
+# Add true color & italics support with alacritty terminal
+# set -g default-terminal "alacritty"

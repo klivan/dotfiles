@@ -13,7 +13,7 @@
     "python.venvFolders": [
         "venv"
     ],
-    "python.formatting.blackPath": "~/.VirtualEnv/neovim/bin/black",
+    "python.formatting.blackPath": "~/Library/Python/3.7/bin/black",
     "coc.preferences.formatOnSaveFiletypes": [
         "css",
         "markdown",
@@ -25,11 +25,15 @@
     ],
     "suggest.enablePreview": true,
     "languageserver": {
-      "go": {
-        "command": "gopls",
-        "rootPatterns": ["go.mod"],
-        "trace.server": "verbose",
-        "filetypes": ["go"]
-      }
+        "go": {
+            "command": "gopls",
+            "rootPatterns": [
+                "go.mod"
+            ],
+            "trace.server": "verbose",
+            "filetypes": [
+                "go"
+            ]
+        }
     }
 }
