@@ -3,11 +3,11 @@
 To install:
 
 ```bash
-cd ~/
-
 # Save old configs
-mv .vim .vim.old
-mv .config/nvim .config/nvim-old
+mv ~/.vim ~/.vim.old
+mv ~/.config/nvim ~/.config/nvim-old
+
+cd ~
 
 git clone https://github.com/klivan/dotfiles
 ln -s ~/dotfiles/.vim .
