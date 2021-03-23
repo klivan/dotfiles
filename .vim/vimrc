@@ -1,0 +1,170 @@
+" be iMproved
+set nocompatible
+
+" Enable syntax highlighting
+" You need to reload this file for the change to apply
+filetype off
+filetype plugin indent on
+
+" syntax on
+syntax on                " Syntax highlighting
+syntax sync minlines=256 " Makes big files slow
+set synmaxcol=300        " Also long lines are slow
+set autoindent           " try your darndest to keep my indentation
+" set smartindent          " Be smarter about indenting dummy
+
+set encoding=UTF-8
+
+" Better buffers - switch to different buffer with unsaved changes
+set hidden
+
+" faster redrawing
+set ttyfast
+
+" make search case insensitive
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Use system clipboard
+set clipboard^=unnamed,unnamedplus
+
+" Show line numbers
+set number
+
+" Mouse and backspace
+set mouse=a   " on OSX press ALT and click
+set bs=2      " make backspace behave like normal again
+set mousehide
+
+" Don't beep at me!
+set vb
+
+" Command to generate Ctags:
+" ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./.ctags ./
+" use .ctags file if exists in current directiry
+set tags=.ctags;
+
+" Plugins
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/share/vim/vim80
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Nerdtree and syntax highlighting
+Plugin 'scrooloose/nerdtree'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'vwxyutarooo/nerdtree-devicons-syntax'
+
+" FZF
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+
+" Use Airline
+Plugin 'vim-airline/vim-airline'
+
+" Easier commenting
+Plugin 'tpope/vim-commentary'
+
+" GO
+Plugin 'fatih/vim-go'
+
+" CoC
+" After installing plugin we also have to run: 
+" cd ~/.vim/bundle/coc.nvim && ./install.sh nightly
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Python
+" @TODO
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Show Git diff in window split when commiting
+autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p
+
+" Show whitespace
+" MUST be inserted BEFORE the colorscheme command
+" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+" au InsertLeave * match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=red
+" Show trailing whitespace:
+match ExtraWhitespace /\s\+$/
+" Show trailing whitespace and spaces before a tab:
+match ExtraWhitespace /\s\+$\| \+\ze\t/
+" Show tabs that are not at the start of a line:
+match ExtraWhitespace /[^\t]\zs\t\+/
+
+match ExtraWhitespace /\s\+\%#\@<!$/
+
+autocmd InsertLeave * redraw!
+
+
+
+" Showing line numbers and length
+set tw=120  " width of document (used by gd)
+set nowrap  " don't automatically wrap on load
+set fo-=t   " don't automatically wrap text when typing
+set colorcolumn=120
+highlight ColorColumn ctermbg=233 guibg=lightgrey
+highlight CursorLine ctermbg=233 ctermfg=white
+highlight LineNr ctermfg=grey
+set cursorline
+
+" Useful settings
+set history=10000
+set undolevels=10000
+
+" Real programmers don't use TABs but spaces
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+
+" Disable backup and swap files - they trigger too many events
+" for file system watchers
+set nobackup
+set nowritebackup
+set noswapfile
+
+set undodir=~/.vim/undodir
+set undofile
+
+" Do not suggest *.pyc files in autocomplete
+set wildignore+=*.pyc
+
+" Make comments to be Italic
+set t_ZH=[3m
+set t_ZR=[23m
+
+
+" Better Code folding
+set foldmethod=indent
+
+" Always open new files with all folds expanded
+set nofoldenable
+nmap <space> za
+vnoremap <space> zf
+
+" Show Tab characters and trailing spaces
+set listchars=tab:>-,trail:·
+
+" But don't show tabs in *.go files
+" au BufNewFile,BufRead *.go set nolist
+autocmd FileType proto set noexpandtab
+
+" Include Other Configs
+source ~/.vim/plugins.vim
+source ~/.vim/airline.vim
+source ~/.vim/keymaps.vim
+source ~/.vim/colors.vim
+source ~/.vim/functions.vim
+source ~/.vim/sessions.vim
+source ~/.vim/coc.vim
