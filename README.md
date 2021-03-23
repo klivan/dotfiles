@@ -23,3 +23,10 @@ Now open `vim` (I have an alias `alias vim='nvim'` and install plugins and CoC D
 :PluginInstall
 :CocInstall coc-python coc-go coc-json
 ```
+
+# Tmux config
+```bash
+ln -s ~/dotfiles/.tmux ~/
+ln -s ~/dotfiles/.tmux.conf ~/
+ln -s ~/dotfiles/.tmux.conf.local ~/
+```
