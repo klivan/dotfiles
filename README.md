@@ -4,7 +4,6 @@ To install:
 
 ```bash
 cd ~/
-mkdir -p ~/.config/nvim
 
 # Save old configs
 mv .vim .vim.old
