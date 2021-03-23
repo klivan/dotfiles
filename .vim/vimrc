@@ -64,7 +64,6 @@ Plugin 'vwxyutarooo/nerdtree-devicons-syntax'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
-
 " Use Airline
 Plugin 'vim-airline/vim-airline'
 
@@ -75,12 +74,24 @@ Plugin 'tpope/vim-commentary'
 Plugin 'fatih/vim-go'
 
 " CoC
-" After installing plugin we also have to run: 
+" After installing plugin we also have to run:
 " cd ~/.vim/bundle/coc.nvim && ./install.sh nightly
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Git integration
+Plugin 'tpope/vim-fugitive'
+" Show added/changed/removed lines in the sign column
+Plugin 'mhinz/vim-signify'
+Plugin 'ruanyl/vim-gh-line'
+
+" TagBar
+Plugin 'majutsushi/tagbar'
+
 " Python
-" @TODO
+" @TODO: Test and configure
+" Plugin 'dense-analysis/ale'
+" Plugin 'nvie/vim-flake8'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -117,7 +128,7 @@ highlight CursorLine ctermbg=233 ctermfg=white
 highlight LineNr ctermfg=grey
 set cursorline
 
-" Useful settings
+" We want a lot of history
 set history=10000
 set undolevels=10000
 
@@ -126,6 +137,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
+" Automatically convert tabs to spaces
 set expandtab
 
 " Disable backup and swap files - they trigger too many events
@@ -144,7 +156,6 @@ set wildignore+=*.pyc
 set t_ZH=[3m
 set t_ZR=[23m
 
-
 " Better Code folding
 set foldmethod=indent
 
@@ -157,7 +168,11 @@ vnoremap <space> zf
 set listchars=tab:>-,trail:·
 
 " But don't show tabs in *.go files
-" au BufNewFile,BufRead *.go set nolist
+au BufNewFile,BufRead *.go set nolist
+" Show Vertical lines in Go files. DO NOT remove an empty space at the end of next line
+au BufNewFile,BufRead *.go set list lcs=tab:\┊\ 
+
+" For .proto files don't convert tabs to spaces
 autocmd FileType proto set noexpandtab
 
 " Include Other Configs

@@ -69,3 +69,24 @@ nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 
 " Show tag bar
 nmap <silent> <leader>i :TagbarToggle<CR>
+
+" Toggle Nerdtree
+map <Leader>; :NERDTreeToggle<CR>
+
+" Removes highlight of your last search
+noremap <silent> <C-n> :nohl<CR>
+vnoremap <silent> <C-n> :nohl<CR>
+inoremap <silent> <C-n> <ESC>:nohl<CR>a
+
+" "Faster" ESC :)
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+" Move to next window and maximize it with CTRL + HJKL
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-H> <C-W>h<C-W>|
+map <C-L> <C-W>l<C-W>|
+
+" IndentLine (plugin)
+noremap <Leader>p :IndentLinesToggle<CR>
