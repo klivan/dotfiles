@@ -1,3 +1,8 @@
-.vim/bundle/
-.vim/sessions/
-.vim/undodir/
+!.vim/
+!.vim/bundle/
+.vim/bundle/*
+!.vim/sessions/
+.vim/sessions/*
+!.vim/undodir/
+.vim/undodir/*
+.vim/.netrwhist

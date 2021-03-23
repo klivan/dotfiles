@@ -87,6 +87,9 @@ Plugin 'ruanyl/vim-gh-line'
 " TagBar
 Plugin 'majutsushi/tagbar'
 
+" IdentLine shows a vertical line on indentation
+Plugin 'Yggdroot/indentLine' " -- draw vertical line on indentation
+
 " Python
 " @TODO: Test and configure
 " Plugin 'dense-analysis/ale'
