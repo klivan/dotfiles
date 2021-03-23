@@ -24,6 +24,11 @@ let g:badwolf_darkgutter = 1
 " Make the tab line much lighter than the background.
 let g:badwolf_tabline = 3
 
+" Select Color Scheme
 colorscheme badwolf
-hi Comment guifg=#5C6370 ctermfg=59
+
+" Change color for comments
+" hi Comment guifg=#5C6370 ctermfg=59
+
+" Show comments in Italic
 hi Comment cterm=italic gui=italic
