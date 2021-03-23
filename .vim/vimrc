@@ -82,6 +82,7 @@ Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'tpope/vim-fugitive'
 " Show added/changed/removed lines in the sign column
 Plugin 'mhinz/vim-signify'
+" Shortcuts to open file in GitHub
 Plugin 'ruanyl/vim-gh-line'
 
 " TagBar
