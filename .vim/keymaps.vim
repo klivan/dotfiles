@@ -110,3 +110,10 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 autocmd FileType go nmap <Leader>o <Plug>(go-coverage-toggle)
 let g:go_fmt_command = "goimports"
+
+" <leader>b inserts an ipdb breakpoint
+map <Leader>bb Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+let @v = 'f=aValue(string_value=f,i)0j'
+map <C-m> f=aValue(string_value=f,i)0j
+map <C-y> f=aValue(bool_value=f,i)0j
+map <leader>t :b#<CR>

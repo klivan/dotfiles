@@ -99,6 +99,18 @@ Plugin 'vimwiki/vimwiki'
 " Plugin 'dense-analysis/ale'
 " Plugin 'nvie/vim-flake8'
 
+" ColorSchemes
+Plugin 'morhetz/gruvbox'
+Plugin 'rakr/vim-one'
+Plugin 'dracula/vim'
+Plugin 'KeitaNakamura/neodark.vim'
+Plugin 'colepeters/spacemacs-theme.vim'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'jacoborus/tender.vim'
+Plugin 'Rigellute/rigel'
+Plugin 'liuchengxu/space-vim-dark'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'sickill/vim-monokai'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
