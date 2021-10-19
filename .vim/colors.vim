@@ -25,8 +25,8 @@ let g:badwolf_darkgutter = 1
 let g:badwolf_tabline = 3
 
 " Select Color Scheme
-" colorscheme badwolf
-colorscheme monokai
+colorscheme badwolf
+" colorscheme monokai
 
 " Change color for comments
 " hi Comment guifg=#5C6370 ctermfg=59

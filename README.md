@@ -29,3 +29,11 @@ ln -s ~/dotfiles/.tmux ~/
 ln -s ~/dotfiles/.tmux.conf ~/
 ln -s ~/dotfiles/.tmux.conf.local ~/
 ```
+
+# Alacritty
+
+If using Alacritty as your terminal - install terminfo:
+```
+curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info > /tmp/alacritty.info
+tic -x /tmp/alacritty.info
+```
