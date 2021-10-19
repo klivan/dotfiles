@@ -20,7 +20,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 Now open `vim` (I have an alias `alias vim='nvim'` and install plugins and CoC Dependencies:
 ```
 :PluginInstall
-:CocInstall coc-python coc-go coc-json
+:CocInstall coc-pyright coc-go coc-json
 ```
 
 # Tmux config

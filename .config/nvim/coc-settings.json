@@ -8,11 +8,8 @@
         "-d",
         "C0411"
     ],
-    "python.linting.pylintUseMinimalCheckers": false,
     "python.formatting.provider": "black",
-    "python.venvFolders": [
-        "venv"
-    ],
+    "python.venvPath": "venv",
     "python.formatting.blackPath": "~/Library/Python/3.7/bin/black",
     "coc.preferences.formatOnSaveFiletypes": [
         "css",
@@ -25,7 +22,7 @@
     ],
     "suggest.enablePreview": true,
     "languageserver": {
-        "golang": {
+        "go": {
             "command": "gopls",
             "rootPatterns": [
                 "go.mod"
