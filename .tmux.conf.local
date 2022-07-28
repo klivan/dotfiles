@@ -180,7 +180,10 @@ tmux_conf_theme_right_separator_sub=''  #   PowerlineSymbols.otf font
 #     - #{username_ssh}
 tmux_conf_theme_status_left=' ❐ #S | ↑#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} '
 # tmux_conf_theme_status_right='#[fg=magenta,bold] #(python3 ~/.tmux/get_btc_price.py) #(curl "wttr.in?format=1&m"),#{pairing}#{?battery_status, #{battery_status},}#{?battery_hbar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , #{loadavg} , %R , %d %b | #{username}#{root} | #{hostname_ssh} '
-tmux_conf_theme_status_right=', #(~/.tmux/get-eth-price.sh) , #(python3 ~/.tmux/get-stock-price.py ^GSPC ^GSPC no) , #(python3 ~/.tmux/get-stock-price.py DDOG DDOG yes) , #(curl "wttr.in?format=1&m") ,#{pairing}#{?battery_status, #{battery_status},}#{?battery_percentage,#{battery_percentage},} , #{loadavg} , %R , %d %b | #{username}#{root} | #{hostname_ssh} '
+
+# tmux_conf_theme_status_right=', #(~/.tmux/get-eth-price.sh) , #(python3 ~/.tmux/get-stock-price.py ^GSPC ^GSPC no) , #(python3 ~/.tmux/get-stock-price.py DDOG DDOG yes) , #(curl "wttr.in?format=1&m") ,#{pairing}#{?battery_status, #{battery_status},}#{?battery_percentage,#{battery_percentage},} , #{loadavg} , %R , %d %b | #{username}#{root} | #{hostname_ssh} '
+
+tmux_conf_theme_status_right=', #(~/.tmux/get-eth-price.sh) , #(python3 ~/.tmux/get-stock-price.py ^GSPC ^GSPC no) , #(python3 ~/.tmux/get-stock-price.py DDOG DDOG yes) , #(curl "wttr.in?format=1&m") , %R , %d %b '
 # tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} '
 
 # status left style
@@ -388,6 +391,9 @@ bind-key -n M-Y choose-buffer 'run-shell "tmux save-buffer -b \"%%%\" - | yank >
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
+# constantly save tmux sessioe
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
 
 run -b '~/.tmux/plugins/tpm/tpm'
 set -g status-interval 60     # redraw status line every 10 seconds
@@ -402,3 +408,12 @@ bind-key N command-prompt -p "send pane to:"  "join-pane -h -t ':%%'"
 
 # Add true color & italics support with alacritty terminal
 # set -g default-terminal "alacritty"
+
+## Restore Vim sessions
+set -g @resurrect-strategy-vim 'session'
+## Restore Neovim sessions
+set -g @resurrect-strategy-nvim 'session'
+## Restore Panes
+set -g @resurrect-capture-pane-contents 'on'
+## Restore last saved environment (automatically)
+# set -g @continuum-restore 'on'
