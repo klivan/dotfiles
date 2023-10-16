@@ -10,3 +10,5 @@
 .tmux/plugins/*
 !.tmux/resurrect/
 .tmux/resurrect/*
+.config/nvim/pack/
+.config/nvim/plugin/packer_compiled.lua

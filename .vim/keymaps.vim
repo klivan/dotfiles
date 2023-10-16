@@ -82,6 +82,10 @@ inoremap <silent> <C-n> <ESC>:nohl<CR>a
 inoremap jk <Esc>
 inoremap kj <Esc>
 
+" Quickfix Shortcuts
+map <C-j> :cn<CR>
+map <C-k> :cp<CR>
+
 " Move to next window and maximize it with CTRL + HJKL
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
