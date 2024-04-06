@@ -40,8 +40,9 @@ mason_null_ls.setup({
 		"stylua", -- lua formatter
 		"eslint_d", -- ts/js linter
 		-- python
-		"flake8",
+		-- "flake8",
 		-- "black",
+		"ruff",
 		"pyright",
 		"python",
 		"gopls",
@@ -58,10 +59,10 @@ require("lspconfig").gopls.setup({
 })
 
 -- custom/init.lua
-local enable_providers = {
-	"python3_provider",
-	"python3",
-}
+-- local enable_providers = {
+-- 	"python3_provider",
+-- 	"python3",
+-- }
 --
 -- vim.g.python3_host_prog = "~/.pyenv/shims/python"
 --

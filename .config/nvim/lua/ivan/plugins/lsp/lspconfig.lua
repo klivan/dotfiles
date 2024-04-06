@@ -19,7 +19,7 @@ local on_attach = function(client, bufnr)
 
 	-- set keybinds
 	keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-	keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
+	keymap.set("n", "gD", "<Cmd>Lspsaga goto_definition<CR>", opts) -- go to declaration
 	keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
 	keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
 	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
@@ -80,6 +80,52 @@ lspconfig["gopls"].setup({
 	on_attach = on_attach,
 })
 
+local pyright_extra_paths = {
+	"lib/audit-logs",
+	"lib/datacenter-spinup",
+	"lib/json-api-common",
+	"lib/dd-kafka-shards",
+	"lib/dd-sessions",
+	"lib/dd-logging",
+	"lib/dd-watchdog-metric-signals",
+	"lib/dogpound",
+	"lib/dd-keys",
+	"lib/api-key-usage-tracker",
+	"lib/dd-db",
+	"lib/dogweb-lib",
+	"lib/static-asset",
+	"lib/redis-v2",
+	"lib/dd-util-context",
+	"lib/event-grammar",
+	"lib/dd-beaker-extensions",
+	"lib/datasets",
+	"lib/cloud-cost-management",
+	"lib/mcnulty-base",
+	"lib/dd-util-experiments",
+	"lib/terminator",
+	"lib/zoltron",
+	"lib/dd-security",
+	"lib/datalayer-v2",
+	"lib/dd-identity",
+	"lib/dogweb-linters",
+	"lib/dd-resilience",
+	"lib/dd-numpy",
+	"lib/dd-compress",
+	"lib/integration-base",
+	"lib/historical-metrics-query",
+	"lib/point-payload-ext",
+	"lib/on-behalf-of",
+	"lib/dd-auth",
+	"lib/dogweb-version",
+	"lib/dd-util",
+	"lib/ephemera",
+	"lib/ddgrpc",
+	"lib/ddgrpc/src",
+	"lib/dd-org-config",
+	"lib/dogweb-model",
+	"lib/cfgdistributionlib",
+	"lib/billing",
+}
 lspconfig.pyright.setup({
 	on_attach = on_attach,
 	settings = {
@@ -90,6 +136,7 @@ lspconfig.pyright.setup({
 				diagnosticMode = "openFilesOnly",
 				useLibraryCodeForTypes = true,
 				typeCheckingMode = "off",
+				extraPaths = pyright_extra_paths,
 			},
 		},
 	},

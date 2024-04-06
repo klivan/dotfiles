@@ -24,14 +24,14 @@ null_ls.setup({
 		--  "formatting.prettier.with({disabled_filetypes = {}})" (see null-ls docs)
 		formatting.prettier.with({ disabled_filetypes = { "yaml" } }), -- js/ts formatter
 		formatting.stylua, -- lua formatter
-		diagnostics.eslint_d.with({ -- js/ts linter
-			-- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
-			condition = function(utils)
-				return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
-			end,
-		}),
+		-- diagnostics.eslint_d.with({ -- js/ts linter
+		-- 	-- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
+		-- 	condition = function(utils)
+		-- 		return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
+		-- 	end,
+		-- }),
 		-- python
-		b.diagnostics.flake8,
+		b.diagnostics.ruff,
 		b.formatting.black.with({
 			command = "/opt/homebrew/bin/black",
 			args = { "--quiet", "-" },

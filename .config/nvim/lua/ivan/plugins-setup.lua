@@ -35,6 +35,8 @@ return packer.startup(function(use)
 
 	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
 	use("sjl/badwolf")
+	use("sainnhe/gruvbox-material")
+	use("morhetz/gruvbox")
 
 	-- use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
@@ -80,7 +82,6 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 	use({
 		"glepnir/lspsaga.nvim",
-		branch = "main",
 		requires = {
 			{ "nvim-tree/nvim-web-devicons" },
 			{ "nvim-treesitter/nvim-treesitter" },
@@ -117,6 +118,14 @@ return packer.startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 
 	use("ruanyl/vim-gh-line")
+
+	-- undo tree
+	use("mbbill/undotree")
+
+	-- git fugitive
+	use("tpope/vim-fugitive")
+
+	use("github/copilot.vim")
 
 	if packer_bootstrap then
 		require("packer").sync()

@@ -36,8 +36,11 @@ keymap.set("n", "qq", ":bp <BAR> bd #<CR>", { silent = true })
 keymap.set("n", "<leader>c", '"_c')
 
 -- write without formatting
-keymap.set("n", "<leader>w", ":noa w")
-keymap.set("i", "<leader>w", "<ESC>:noa w")
+keymap.set("n", "<leader>w", ":noa w<CR>", { silent = true })
+keymap.set("i", "<leader>w", "<ESC>:noa w<CR>", { silent = true })
+
+keymap.set("n", "<leader>bb", "Oif err != nil {\nreturn err\n}<C-c>")
+keymap.set("n", "<leader>bn", "Oif err != nil {\nreturn nil, err\n}<C-c>")
 
 ----------------------
 -- Plugin Keybinds
@@ -75,3 +78,8 @@ keymap.set("n", "<C-k>", ":cp<CR>")
 
 -- sort
 keymap.set("v", "<leader>s", ":sort<CR>")
+
+keymap.set("n", "<C-g>", "<cmd>silent !tmux neww tmux-sessionizer<CR>") -- open tmux sessionizer in new tmux window
+-- copy current file name and line number to clipboard
+keymap.set("n", "<leader>y", "<cmd>let @+ = expand('%')<CR>") -- copy current file name and line number to clipboard
+keymap.set("n", "<leader>b", "<cmd>let @+ = 'b ' . join([expand('%'),  line('.')], ':')<CR>") -- copy current file name and line number to clipboard
