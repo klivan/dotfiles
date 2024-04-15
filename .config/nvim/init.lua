@@ -1,6 +1,5 @@
 require("ivan.plugins-setup")
 require("ivan.core.options")
-require("ivan.core.keymaps")
 require("ivan.core.colorscheme")
 
 require("ivan.plugins.comment")
@@ -18,3 +17,5 @@ require("ivan.plugins.treesitter")
 require("ivan.plugins.gitsigns")
 require("ivan.plugins.undo-tree")
 require("ivan.plugins.indent-blankline")
+
+require("ivan.core.keymaps")

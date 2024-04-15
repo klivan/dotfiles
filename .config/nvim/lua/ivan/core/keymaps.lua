@@ -1,5 +1,5 @@
 -- set leader key to space
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 
@@ -26,11 +26,7 @@ keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 -- map <C-j> :cn<CR>
 -- map <C-k> :cp<CR>
 
-keymap.set("n", "1", ":cn<CR>", { silent = true })
-keymap.set("n", "2", ":cp<CR>", { silent = true })
-
 -- " Use qq in normal mode to close current buffer
--- nmap <silent> qq
 keymap.set("n", "qq", ":bp <BAR> bd #<CR>", { silent = true })
 
 keymap.set("n", "<leader>c", '"_c')
@@ -58,6 +54,9 @@ keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in 
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap.set("n", "<leader>l", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+-- temp
+keymap.set("n", "<leader>s.", "<cmd>Telescope oldfiles<cr>")
+keymap.set("n", "<leader>sr", "<cmd>Telescope resume<cr>")
 
 local builtin = require("telescope.builtin")
 keymap.set("n", "<leader>fr", builtin.lsp_references)
@@ -73,8 +72,8 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
 
 -- quickfix
-keymap.set("n", "<C-j>", ":cn<CR>")
-keymap.set("n", "<C-k>", ":cp<CR>")
+keymap.set("n", "<C-j>", ":cn<CR>zz")
+keymap.set("n", "<C-k>", ":cp<CR>zz")
 
 -- sort
 keymap.set("v", "<leader>s", ":sort<CR>")
