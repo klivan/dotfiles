@@ -12,9 +12,10 @@ keymap.set("i", "jk", "<ESC>")
 keymap.set("i", "kj", "<ESC>")
 
 -- clear search highlights
-keymap.set("n", "<C-n>", ":nohl<CR>", { silent = true })
-keymap.set("v", "<C-n>", ":nohl<CR>", { silent = true })
-keymap.set("i", "<C-n>", ":nohl<CR>", { silent = true })
+keymap.set("n", "<ESC>", ":nohl<CR>", { silent = true })
+-- keymap.set("n", "<C-n>", ":nohl<CR>", { silent = true })
+-- keymap.set("v", "<C-n>", ":nohl<CR>", { silent = true })
+-- keymap.set("i", "<C-n>", ":nohl<CR>", { silent = true })
 
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
@@ -33,7 +34,8 @@ keymap.set("n", "<leader>c", '"_c')
 
 -- write without formatting
 keymap.set("n", "<leader>w", ":noa w<CR>", { silent = true })
-keymap.set("i", "<leader>w", "<ESC>:noa w<CR>", { silent = true })
+-- do not enable this if your leader  key is space: it will add delay to space key
+-- keymap.set("i", "<leader>w", "<ESC>:noa w<CR>", { silent = true })
 
 keymap.set("n", "<leader>bb", "Oif err != nil {\nreturn err\n}<C-c>")
 keymap.set("n", "<leader>bn", "Oif err != nil {\nreturn nil, err\n}<C-c>")
@@ -62,6 +64,10 @@ local builtin = require("telescope.builtin")
 keymap.set("n", "<leader>fr", builtin.lsp_references)
 keymap.set("n", "<C-p>", builtin.git_files) -- list available help tags
 
+-- keymap.set({ "n", "x" }, "<leader>rr", function()
+-- 	require("telescope").extensions.refactoring.refactors()
+-- end)
+
 -- telescope git commands (not on youtube nvim video)
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
 keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
@@ -72,8 +78,8 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
 
 -- quickfix
-keymap.set("n", "<C-j>", ":cn<CR>zz")
-keymap.set("n", "<C-k>", ":cp<CR>zz")
+-- keymap.set("n", "<C-j>", ":cn<CR>zz")
+-- keymap.set("n", "<C-k>", ":cp<CR>zz")
 
 -- sort
 keymap.set("v", "<leader>s", ":sort<CR>")

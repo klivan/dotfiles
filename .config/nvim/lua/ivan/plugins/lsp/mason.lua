@@ -56,6 +56,15 @@ require("lspconfig").gopls.setup({
 	fillstruct = "gopls",
 	dap_debug = true,
 	dap_debug_gui = true,
+	settings = {
+		gopls = {
+			completeUnimported = true,
+			usePlaceholders = true,
+			analyses = {
+				unusedparams = true,
+			},
+		},
+	},
 })
 
 -- custom/init.lua

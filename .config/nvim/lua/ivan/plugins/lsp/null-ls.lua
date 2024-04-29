@@ -11,8 +11,6 @@ local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 -- to setup format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local b = null_ls.builtins
-
 -- configure null_ls
 null_ls.setup({
 	-- setup formatters & linters
@@ -31,16 +29,19 @@ null_ls.setup({
 		-- 	end,
 		-- }),
 		-- python
-		b.diagnostics.ruff,
-		b.formatting.black.with({
+		diagnostics.ruff,
+		formatting.black.with({
 			command = "/opt/homebrew/bin/black",
 			args = { "--quiet", "-" },
 		}),
-		b.formatting.gofmt,
-		b.diagnostics.revive,
-		b.formatting.golines.with({
+		diagnostics.revive,
+
+		-- golang
+		formatting.gofmt,
+		formatting.goimports,
+		formatting.golines.with({
 			extra_args = {
-				"--max-len=180",
+				"--max-len=100",
 				"--base-formatter=gofumpt",
 			},
 		}),

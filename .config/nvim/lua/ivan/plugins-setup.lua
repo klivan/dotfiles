@@ -38,7 +38,7 @@ return packer.startup(function(use)
 	use("sainnhe/gruvbox-material")
 	use("morhetz/gruvbox")
 
-	-- use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
+	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
 	use("szw/vim-maximizer") -- maximizes and restores current window
 
@@ -126,6 +126,14 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 
 	use("github/copilot.vim")
+
+	-- use({
+	-- 	"ThePrimeagen/refactoring.nvim",
+	-- 	requires = {
+	-- 		{ "nvim-lua/plenary.nvim" },
+	-- 		{ "nvim-treesitter/nvim-treesitter" },
+	-- 	},
+	-- })
 
 	if packer_bootstrap then
 		require("packer").sync()
