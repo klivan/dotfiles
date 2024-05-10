@@ -88,3 +88,5 @@ keymap.set("n", "<C-g>", "<cmd>silent !tmux neww tmux-sessionizer<CR>") -- open 
 -- copy current file name and line number to clipboard
 keymap.set("n", "<leader>y", "<cmd>let @+ = expand('%')<CR>") -- copy current file name and line number to clipboard
 keymap.set("n", "<leader>b", "<cmd>let @+ = 'b ' . join([expand('%'),  line('.')], ':')<CR>") -- copy current file name and line number to clipboard
+
+keymap.set("n", "<leader>gt", "<cmd>! cd %:h; go test .<CR>")
