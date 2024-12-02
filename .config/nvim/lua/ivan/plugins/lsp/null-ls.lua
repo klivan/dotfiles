@@ -37,14 +37,14 @@ null_ls.setup({
 		diagnostics.revive,
 
 		-- golang
-		formatting.gofmt,
+		-- formatting.gofmt,
 		formatting.goimports,
-		formatting.golines.with({
-			extra_args = {
-				"--max-len=100",
-				"--base-formatter=gofumpt",
-			},
-		}),
+		formatting.gofumpt,
+		-- formatting.golines.with({
+		-- 	extra_args = {
+		-- 		"--base-formatter=gofumpt",
+		-- 	},
+		-- }),
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)
