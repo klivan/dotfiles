@@ -14,16 +14,15 @@ echo "Installing programs with homebrew"
 brew update
 brew upgrade
 
-# brew install --cask 1password 1password-cli discord karabiner-elements orbstack raycast rectangle-pro shottr visual-studio-code
-# brew install corepack deno dockutil fnm gh git httpie iperf3 node plow stripe tfenv tmux fzf
-
-brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil
-brew install --cask font-maple discord 1password 1password-cli rectangle-pro visual-studio-code orbstack obsidian
+brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq
+brew install --cask font-maple discord 1password 1password-cli rectangle-pro visual-studio-code orbstack obsidian 
 
 # enable automatic updates every 12 hours
 echo "Enabling autoupdate for homebrew packages..."
 brew tap homebrew/autoupdate
 brew autoupdate start 43200 --upgrade
+
+sudo softwareupdate -i Bear
 
 # Set up dock icons
 echo "Setting up dock"
@@ -37,6 +36,7 @@ dockutil --add "/System/Applications/Messages.app" --no-restart
 dockutil --add "/System/Applications/Notes.app" --no-restart
 dockutil --add "/System/Applications/Utilities/Activity Monitor.app" --no-restart
 dockutil --add "/System/Applications/System Settings.app" --no-restart
+dockutil --add "/Applications/Bear.app" --no-restart
 
 # Folders to add to the dock
 dockutil --add '/Applications' --view grid --display folder --no-restart
@@ -48,9 +48,9 @@ xcode-select --install
 
 # oh-my-tmux
 cd ~
-git clone https://github.com/gpakosz/.tmux.git
-ln -s -f .tmux/.tmux.conf
-cp .tmux/.tmux.conf.local .
+# git clone https://github.com/gpakosz/.tmux.git
+# ln -s -f .tmux/.tmux.conf
+# cp .tmux/.tmux.conf.local .
 
 eval "$(op signin)"
 
@@ -127,5 +127,22 @@ sh -c "$(curl -# -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/
 # fzf
 source <(fzf --zsh)
 
+cd $HOME
+git clone https://github.com/klivan/dotfiles.git
+
+ln -s ~/dotfiles/.tmux .
+ln -s ~/dotfiles/.tmux.conf .
+ln -s ~/dotfiles/.tmux.conf.local .
+
+ln -s ~/dotfiles/.zshrc .
+
+mkdir -p ~/.config
+ln -s ~/dotfiles/.config/ghostty ~/.config/
+ln -s ~/dotfiles/.config/nvim ~/.config/
+ln -s ~/dotfiles/.config/alacritty/ ~/.config/
+
+ln -s ~/dotfiles/.gitconfig .
+
 # finish
 source ~/.zshrc
+
