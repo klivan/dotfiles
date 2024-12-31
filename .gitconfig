@@ -1,0 +1,57 @@
+[user]
+	email = ivan@klishch.com
+	name = Ivan Klishch
+	signingkey = 6E3BEDE996CB8103
+[core]
+	hooksPath = /usr/local/dd/global_hooks
+	editor = nvim
+	excludesfile = ~/.gitignore_global
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[merge]
+	tool = vimdiff
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[commit]
+	gpgsign = true
+[tag]
+	forceSignAnnotated = true
+; [gpg]
+; 	program = /Users/ivan.klishch/.local/bin/yubinotif
+; 	format = ssh
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    dc = diff --cached
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+    lg1 = log --color --all --pretty='format:%d %Cgreen%h%Creset %an - %s' --graph
+    lg2 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[url "git@github.com:"]
+	insteadOf = https://github.com
+[fetch]
+    prune = true
+[pull]
+    rebase = false
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[gpg]
+	program = /opt/homebrew/bin/gpg
