@@ -15,7 +15,7 @@ brew update
 brew upgrade
 
 brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq pinentry-mac
-brew install --cask font-maple discord 1password 1password-cli rectangle-pro visual-studio-code orbstack obsidian 
+brew install --cask font-maple discord 1password 1password-cli rectangle-pro visual-studio-code orbstack obsidian signal telegram
 
 # enable automatic updates every 12 hours
 echo "Enabling autoupdate for homebrew packages..."
@@ -142,6 +142,8 @@ ln -s ~/dotfiles/.config/nvim ~/.config/
 ln -s ~/dotfiles/.config/alacritty/ ~/.config/
 
 ln -s ~/dotfiles/.gitconfig .
+
+mkdir -p ~/.gnupg/
 
 # finish
 source ~/.zshrc
