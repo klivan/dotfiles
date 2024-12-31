@@ -14,7 +14,7 @@ echo "Installing programs with homebrew"
 brew update
 brew upgrade
 
-brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq pinentry-mac
+brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq pinentry-mac go npm stripe/stripe-cli/stripe
 brew install --cask font-maple discord 1password 1password-cli rectangle-pro visual-studio-code orbstack obsidian signal telegram
 
 # enable automatic updates every 12 hours
@@ -103,6 +103,11 @@ defaults write com.apple.finder AppleShowAllFiles -bool true               # Sho
 defaults write com.apple.finder ShowPathbar -bool true                     # Show path bar
 defaults write com.apple.finder ShowStatusBar -bool true                   # Show status bar
 killall Finder
+
+# Enable tap to click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
 # Disable "the disk was not ejected properly" messages
 defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool YES
