@@ -14,7 +14,7 @@ echo "Installing programs with homebrew"
 brew update
 brew upgrade
 
-brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq
+brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq pinentry-mac
 brew install --cask font-maple discord 1password 1password-cli rectangle-pro visual-studio-code orbstack obsidian 
 
 # enable automatic updates every 12 hours
