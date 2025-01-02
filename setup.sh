@@ -14,8 +14,8 @@ echo "Installing programs with homebrew"
 brew update
 brew upgrade
 
-brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq pinentry-mac go npm stripe/stripe-cli/stripe the_silver_searcher
-brew install --cask font-maple discord 1password 1password-cli rectangle-pro visual-studio-code orbstack obsidian signal telegram
+brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq pinentry-mac go npm stripe/stripe-cli/stripe the_silver_searcher font-hack-nerd-font
+brew install --cask font-maple discord 1password 1password-cli rectangle-pro visual-studio-code orbstack obsidian signal telegram font-meslo-lg-nerd-font
 
 # enable automatic updates every 12 hours
 echo "Enabling autoupdate for homebrew packages..."
@@ -157,6 +157,10 @@ mkdir -p ~/.gnupg/
 
 rm ~/.gnupg/gpg-agent.conf
 ln -s ~/dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/
+
+# alacritty
+curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info > /tmp/alacritty.info
+tic -x /tmp/alacritty.info
 
 # finish
 source ~/.zshrc
