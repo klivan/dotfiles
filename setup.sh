@@ -154,6 +154,8 @@ mkdir -p ~/.gnupg/
 rm ~/.gnupg/gpg-agent.conf
 ln -s ~/dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/
 
+ln -s ~/dotfiles/.bashrc_dd ~/.bashrc_dd
+
 # alacritty
 curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info > /tmp/alacritty.info
 tic -x /tmp/alacritty.info
