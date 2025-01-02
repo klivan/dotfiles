@@ -53,15 +53,6 @@ cd ~
 git clone https://github.com/gpakosz/.tmux.git
 ln -s -f .tmux/.tmux.conf
 
-eval "$(op signin)"
-
-# set up ssh keys
-echo "Setting up SSH keys"
-mkdir -p ~/.ssh
-op read "op://Private/Github SSH Key/private key" -o ~/.ssh/id_ed25519
-chmod 600 ~/.ssh/id_ed25519
-ssh-add ~/.ssh/id_ed25519
-
 # Set up dock hiding if on a laptop
 dockconfig() {
   printf "\nLaptop selected, setting up dock hiding."
@@ -121,9 +112,6 @@ open "/Applications/Rectangle Pro.app"
 echo "Removing config programs"
 brew remove dockutil
 
-# oh-my-zsh (must be last)
-sh -c "$(curl -# -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # add ssh-agent plugin
 #sed -i -e 's/plugins=(git)/plugins=(git ssh-agent)/' ~/.zshrc
 
@@ -131,7 +119,7 @@ sh -c "$(curl -# -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/
 #echo "eval \"\$(fnm env --use-on-cd)\"" >>~/.zshrc
 
 # fzf
-source <(fzf --zsh)
+# source <(fzf --zsh)
 
 cd $HOME
 git clone https://github.com/klivan/dotfiles.git
@@ -160,5 +148,5 @@ ln -s ~/dotfiles/.bashrc_dd ~/.bashrc_dd
 curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info > /tmp/alacritty.info
 tic -x /tmp/alacritty.info
 
-# finish
-source ~/.zshrc
+# Install ZSH - much be last!
+sh -c "$(curl -# -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
