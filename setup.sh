@@ -14,7 +14,7 @@ echo "Installing programs with homebrew"
 brew update
 brew upgrade
 
-brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq pinentry-mac go npm stripe/stripe-cli/stripe
+brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq pinentry-mac go npm stripe/stripe-cli/stripe the_silver_searcher
 brew install --cask font-maple discord 1password 1password-cli rectangle-pro visual-studio-code orbstack obsidian signal telegram
 
 # enable automatic updates every 12 hours
@@ -137,10 +137,12 @@ source <(fzf --zsh)
 cd $HOME
 git clone https://github.com/klivan/dotfiles.git
 
+rm ~/.tmux ~/.tmux.conf ~/.tmux.conf.local
 ln -s ~/dotfiles/.tmux .
 ln -s ~/dotfiles/.tmux.conf .
 ln -s ~/dotfiles/.tmux.conf.local .
 
+rm ~/.zshrc
 ln -s ~/dotfiles/.zshrc .
 
 mkdir -p ~/.config
@@ -148,10 +150,12 @@ ln -s ~/dotfiles/.config/ghostty ~/.config/
 ln -s ~/dotfiles/.config/nvim ~/.config/
 ln -s ~/dotfiles/.config/alacritty/ ~/.config/
 
+rm ~/.gitconfig
 ln -s ~/dotfiles/.gitconfig .
 
 mkdir -p ~/.gnupg/
 
+rm ~/.gnupg/gpg-agent.conf
 ln -s ~/dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/
 
 # finish
