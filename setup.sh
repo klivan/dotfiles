@@ -50,9 +50,8 @@ xcode-select --install
 
 # oh-my-tmux
 cd ~
-# git clone https://github.com/gpakosz/.tmux.git
-# ln -s -f .tmux/.tmux.conf
-# cp .tmux/.tmux.conf.local .
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
 
 eval "$(op signin)"
 
@@ -137,9 +136,6 @@ source <(fzf --zsh)
 cd $HOME
 git clone https://github.com/klivan/dotfiles.git
 
-rm ~/.tmux ~/.tmux.conf ~/.tmux.conf.local
-ln -s ~/dotfiles/.tmux .
-ln -s ~/dotfiles/.tmux.conf .
 ln -s ~/dotfiles/.tmux.conf.local .
 
 rm ~/.zshrc
