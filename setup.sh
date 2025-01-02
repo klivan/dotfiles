@@ -148,5 +148,5 @@ ln -s ~/dotfiles/.bashrc_dd ~/.bashrc_dd
 curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info > /tmp/alacritty.info
 tic -x /tmp/alacritty.info
 
-# Install ZSH - much be last!
+# Install ZSH - must be last!
 sh -c "$(curl -# -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
