@@ -37,6 +37,8 @@ dockutil --add "/System/Applications/Notes.app" --no-restart
 dockutil --add "/System/Applications/Utilities/Activity Monitor.app" --no-restart
 dockutil --add "/System/Applications/System Settings.app" --no-restart
 dockutil --add "/Applications/Bear.app" --no-restart
+dockutil --add "/Applications/Signal.app" --no-restart
+dockutil --add "/Applications/Telegram.app" --no-restart
 
 # Folders to add to the dock
 dockutil --add '/Applications' --view grid --display folder --no-restart
@@ -150,6 +152,7 @@ ln -s ~/dotfiles/.gitconfig .
 
 mkdir -p ~/.gnupg/
 
+ln -s ~/dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/
+
 # finish
 source ~/.zshrc
-
