@@ -49,9 +49,9 @@ dockutil --add '~/Downloads' --view list --display folder
 xcode-select --install
 
 # oh-my-tmux
-cd ~
-git clone https://github.com/gpakosz/.tmux.git
-ln -s -f .tmux/.tmux.conf
+# cd ~
+# git clone https://github.com/gpakosz/.tmux.git
+# ln -s -f .tmux/.tmux.conf
 
 # Set up dock hiding if on a laptop
 dockconfig() {
@@ -125,7 +125,8 @@ brew remove dockutil
 cd $HOME
 git clone https://github.com/klivan/dotfiles.git
 
-ln -s ~/dotfiles/.tmux.conf.local .
+ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-osx.conf
 
 rm ~/.zshrc
 ln -s ~/dotfiles/.zshrc .
