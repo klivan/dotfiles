@@ -66,10 +66,10 @@ dockconfig
 
 # configure rectangle pro to use icloud sync and launch on login
 echo "Updating RectanglePro config"
-/usr/libexec/PlistBuddy -c 'delete :iCloudSync' /Users/mrf/Library/Preferences/com.knollsoft.Hookshot.plist
-/usr/libexec/PlistBuddy -c 'add :iCloudSync bool true' /Users/mrf/Library/Preferences/com.knollsoft.Hookshot.plist
-/usr/libexec/PlistBuddy -c 'delete :launchOnLogin' /Users/mrf/Library/Preferences/com.knollsoft.Hookshot.plist
-/usr/libexec/PlistBuddy -c 'add :launchOnLogin bool true' /Users/mrf/Library/Preferences/com.knollsoft.Hookshot.plist
+/usr/libexec/PlistBuddy -c 'delete :iCloudSync' /Users/${USER}/Library/Preferences/com.knollsoft.Hookshot.plist
+/usr/libexec/PlistBuddy -c 'add :iCloudSync bool true' /Users/${USER}/Library/Preferences/com.knollsoft.Hookshot.plist
+/usr/libexec/PlistBuddy -c 'delete :launchOnLogin' /Users/${USER}/Library/Preferences/com.knollsoft.Hookshot.plist
+/usr/libexec/PlistBuddy -c 'add :launchOnLogin bool true' /Users/${USER}/Library/Preferences/com.knollsoft.Hookshot.plist
 
 echo "Updating macOS settings"
 
