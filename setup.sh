@@ -14,7 +14,7 @@ echo "Installing programs with homebrew"
 brew update
 brew upgrade
 
-brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq pinentry-mac go npm stripe/stripe-cli/stripe the_silver_searcher font-hack-nerd-font
+brew install ripgrep fastfetch font-fira-code grpcui yt-dlp terraformer ghostty git tmux fzf zsh-syntax-highlighting zsh-autosuggestions meetingbar neovim dockutil pyenv pyenv-virtualenv bat gpg jq pinentry-mac go npm stripe/stripe-cli/stripe the_silver_searcher font-hack-nerd-font yq
 brew install --cask font-maple discord 1password 1password-cli rectangle-pro visual-studio-code orbstack obsidian signal telegram font-meslo-lg-nerd-font
 
 # enable automatic updates every 12 hours
@@ -70,6 +70,7 @@ echo "Updating RectanglePro config"
 /usr/libexec/PlistBuddy -c 'add :iCloudSync bool true' /Users/${USER}/Library/Preferences/com.knollsoft.Hookshot.plist
 /usr/libexec/PlistBuddy -c 'delete :launchOnLogin' /Users/${USER}/Library/Preferences/com.knollsoft.Hookshot.plist
 /usr/libexec/PlistBuddy -c 'add :launchOnLogin bool true' /Users/${USER}/Library/Preferences/com.knollsoft.Hookshot.plist
+defaults write com.knollsoft.Rectangle centerHalfCycles -int 1
 
 echo "Updating macOS settings"
 
