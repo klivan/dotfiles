@@ -37,6 +37,7 @@ return packer.startup(function(use)
 	use("sjl/badwolf")
 	use("sainnhe/gruvbox-material")
 	use("morhetz/gruvbox")
+	use("ricardoraposo/nightwolf.nvim")
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
