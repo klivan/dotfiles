@@ -144,6 +144,9 @@ mkdir -p ~/.gnupg/
 rm ~/.gnupg/gpg-agent.conf
 ln -s ~/dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/
 
+mkdir -p ~/.local/bin
+ln -s ~/dotfiles/.local/bin/tmux-sessionizer ~/.local/bin/
+
 ln -s ~/dotfiles/.bashrc_dd ~/.bashrc_dd
 
 # alacritty
