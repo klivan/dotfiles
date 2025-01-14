@@ -22,7 +22,8 @@ window-decoration = false
 # No shadow looks cleaner.
 macos-window-shadow = false
 
-theme = GruvboxDarkHard
+# theme = GruvboxDarkHard
+theme = catppuccin-mocha
 
 # Stop Ghostty when I close everything.
 quit-after-last-window-closed = true
