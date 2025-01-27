@@ -150,7 +150,7 @@ alias pg_start="launchctl load /usr/local/opt/postgresql/homebrew.mxcl.postgresq
 alias pg_stop="launchctl unload /usr/local/opt/postgresql/homebrew.mxcl.postgresql.plist"
 
 
-PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}%D %T % %{$reset_color%}'
+#PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}%D %T % %{$reset_color%}'
 edit() {
     vim $(git st | grep 'modified:' | awk '{ print $2}' | xargs)
 }
@@ -236,11 +236,6 @@ function cwatch {
 # Do not BEEP at me!
 setopt NO_BEEP
 
-export PATH=$PATH:$GOPATH/bin
-
-source $HOME/.bashrc_dd
-
-# BEGIN ANSIBLE MANAGED BLOCK
 # Add homebrew binaries to the path.
 export PATH="/usr/local/bin:${PATH?}"
 
@@ -248,43 +243,8 @@ export PATH="/usr/local/bin:${PATH?}"
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_CASK_OPTS=--require-sha
 
-if type "rbenv" > /dev/null; then
-    # Load ruby shims
-    eval "$(rbenv init -)"
-fi
-
-# Prefer GNU binaries to Macintosh binaries.
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-
-# Add datadog devtools binaries to the PATH
-export PATH="${HOME?}/dd/devtools/bin:${PATH?}"
-
-# Point GOPATH to our go sources
-export GOPATH="${HOME?}/go"
-
-# Point DATADOG_ROOT to ~/dd symlink
-export DATADOG_ROOT="${HOME?}/dd"
-
-# Tell the devenv vm to mount $GOPATH/src rather than just dd-go
-export MOUNT_ALL_GO_SRC=1
-
-# store key in the login keychain instead of aws-vault managing a hidden keychain
-export AWS_VAULT_KEYCHAIN_NAME=login
-
-# tweak session times so you don't have to re-enter passwords every 5min
-export AWS_SESSION_TTL=24h
-export AWS_ASSUME_ROLE_TTL=1h
-# END ANSIBLE MANAGED BLOCK
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
-fi
-export PATH="/usr/local/opt/helm@2/bin:$PATH"
-if [[ -e "$HOME/.cloudops-cli.completion" ]]; then
-  source "$HOME/.cloudops-cli.completion"
 fi
 
 #export TERM=tmux-256color
@@ -295,17 +255,7 @@ if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
 fi
 
-export PATH="$HOME/.poetry/bin:$PATH"
-
-export GO111MODULE=auto
-export HOST_HOOK_RUNNER=1
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# Set SSH_AUTH_SOCK to the launchd-managed ssh-agent socket (com.openssh.ssh-agent).
-export SSH_AUTH_SOCK=$(launchctl asuser $(id -u) launchctl getenv SSH_AUTH_SOCK)
-
 # Load SSH keys from the keychain if keychain is empty.
 ssh-add -l > /dev/null || ssh-add --apple-load-keychain 2> /dev/null
+
+source ~/.work.sh
