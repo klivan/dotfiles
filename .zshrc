@@ -258,4 +258,9 @@ fi
 # Load SSH keys from the keychain if keychain is empty.
 ssh-add -l > /dev/null || ssh-add --apple-load-keychain 2> /dev/null
 
+HISTSIZE=100000
+SAVEHIST=100000
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+
 source ~/.work.sh
