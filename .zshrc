@@ -84,8 +84,13 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 export GOPATH=$HOME/go
 
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ "$(uname)" == "Darwin" ]]; then
+	source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+	source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+	source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 
 # User configuration
