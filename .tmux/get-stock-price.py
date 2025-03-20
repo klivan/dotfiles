@@ -1,9 +1,9 @@
 import json
 import sys
-from urllib.request import urlopen
+import urllib.request
 
 
-DEFAULT_PREVIOUS_CLOUSE = 27
+DEFAULT_PREVIOUS_CLOSE = 27
 
 
 # print("--")
@@ -11,11 +11,15 @@ DEFAULT_PREVIOUS_CLOUSE = 27
 
 def get_price(ticker):
     try:
+        opener = urllib.request.build_opener()
+        opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+        urllib.request.install_opener(opener)
+
         yahoo_finance_url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?region=US&lang=en-US&includePrePost=false&interval=2m&range=1d"
-        response = urlopen(yahoo_finance_url)
+        response = urllib.request.urlopen(yahoo_finance_url)
         r = json.loads(response.read())
         current = r['chart']['result'][0]['meta']['regularMarketPrice']
-        previous_close_price = DEFAULT_PREVIOUS_CLOUSE if 'previousClose' not in r['chart']['result'][0]['meta'] else r['chart']['result'][0]['meta']['previousClose']
+        previous_close_price = DEFAULT_PREVIOUS_CLOSE if 'previousClose' not in r['chart']['result'][0]['meta'] else r['chart']['result'][0]['meta']['previousClose']
         change = 100 * ((current / previous_close_price) - 1 )
         price_change = current - previous_close_price
     except Exception:
