@@ -1,7 +1,11 @@
--- import bufferline plugin safely
-local status, bufferline = pcall(require, "bufferline")
-if not status then
-	return
-end
-
-bufferline.setup({})
+return {
+	"akinsho/bufferline.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	version = "*",
+	opts = {
+		options = {
+			-- mode = "tabs",
+			separator_style = "slant",
+		},
+	},
+}
