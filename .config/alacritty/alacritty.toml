@@ -60,7 +60,7 @@ key = "RBracket"
 mods = "Command"
 
 [scrolling]
-history = 10000
+history = 30000
 multiplier = 3
 
 [window]
@@ -76,8 +76,8 @@ columns = 185
 lines = 50
 
 [window.padding]
-x = 0
-y = 0
+x = 1
+y = 1
 
 [general]
 live_config_reload = true

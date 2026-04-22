@@ -58,3 +58,5 @@ keymap.set("n", "<ESC>", ":nohl<CR>", { silent = true })
 
 -- Change without copying into register
 keymap.set("n", "<leader>c", '"_c')
+
+keymap.set("n", "<leader>l", ":FzfLua buffers<CR>", { silent = true })

@@ -5,7 +5,7 @@
 # font-family-bold = "MenloLGS Nerd Font"
 # font-family-italic = "Maple Mono"
 # font-family-bold-italic = "Maple Mono"
-font-size = 14
+font-size = 15
 # adjust-underline-position = 4
 
 keybind = alt+left=unbind
@@ -17,13 +17,12 @@ cursor-style = block
 
 # Remove unneded title bar
 macos-titlebar-style = hidden
-window-decoration = false
-
-# No shadow looks cleaner.
-macos-window-shadow = false
+window-decoration = none
 
 # theme = GruvboxDarkHard
-theme = catppuccin-mocha
+# theme = catppuccin-mocha
+# theme = Monokai Classic
+theme = Gruvbox Material
 
 # Stop Ghostty when I close everything.
 quit-after-last-window-closed = true
@@ -34,3 +33,5 @@ mouse-hide-while-typing = true
 scrollback-limit = 10000000
 
 keybind = cmd+`=toggle_quick_terminal
+
+auto-update-channel = tip

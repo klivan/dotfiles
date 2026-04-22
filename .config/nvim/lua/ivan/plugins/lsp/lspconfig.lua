@@ -5,14 +5,10 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
+		"mason-org/mason.nvim",
+		"mason-org/mason-lspconfig.nvim",
 	},
 	config = function()
-		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
-
-		-- import mason_lspconfig plugin
-		local mason_lspconfig = require("mason-lspconfig")
-
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -118,97 +114,135 @@ return {
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["gopls"] = function()
-				lspconfig["gopls"].setup({
-					capabilities = capabilities,
-					filetypes = { "go" },
-					on_attach = on_attach,
-					settings = {
-						gopls = {
-							gofumpt = true,
-							codelenses = {
-								gc_details = false,
-								generate = true,
-								regenerate_cgo = true,
-								run_govulncheck = true,
-								test = true,
-								tidy = true,
-								upgrade_dependency = true,
-								vendor = true,
-							},
-							hints = {
-								assignVariableTypes = false,
-								compositeLiteralFields = true,
-								compositeLiteralTypes = true,
-								constantValues = true,
-								functionTypeParameters = true,
-								parameterNames = true,
-								rangeVariableTypes = true,
-							},
-							analyses = {
-								nilness = true,
-								unusedparams = true,
-								unusedwrite = true,
-								useany = true,
-							},
-							usePlaceholders = true,
-							completeUnimported = true,
-							staticcheck = true,
-							directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-							semanticTokens = true,
-						},
+		-- configure gopls using new API
+		vim.lsp.config.gopls = {
+			cmd = { "dd-gopls" },
+			filetypes = { "go", "gomod", "gowork", "gotmpl" },
+			cmd_env = {
+				GOPLS_DISABLE_MODULE_LOADS = 1,
+			},
+			root_markers = { "go.work", "go.mod", ".git" },
+			capabilities = capabilities,
+			settings = {
+				gopls = {
+					gofumpt = true,
+					codelenses = {
+						gc_details = false,
+						generate = true,
+						regenerate_cgo = true,
+						run_govulncheck = true,
+						test = true,
+						tidy = true,
+						upgrade_dependency = true,
+						vendor = true,
 					},
-				})
-			end,
-			["pyright"] = function()
-				lspconfig["pyright"].setup({
-					capabilities = capabilities,
-					filetypes = { "py" },
-					settings = {
-						pyright = { autoImportCompletion = true },
-						python = {
-							analysis = {
-								autoSearchPaths = true,
-								diagnosticMode = "openFilesOnly",
-								useLibraryCodeForTypes = true,
-								typeCheckingMode = "off",
-								extraPaths = pyright_extra_paths,
-							},
-						},
+					hints = {
+						assignVariableTypes = false,
+						compositeLiteralFields = true,
+						compositeLiteralTypes = true,
+						constantValues = true,
+						functionTypeParameters = true,
+						parameterNames = true,
+						rangeVariableTypes = true,
 					},
-				})
-			end,
-			["lua_ls"] = function()
-				-- configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							-- make the language server recognize "vim" global
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
+					analyses = {
+						nilness = true,
+						unusedparams = true,
+						unusedwrite = true,
+						useany = true,
 					},
-				})
-			end,
-		})
+					usePlaceholders = true,
+					completeUnimported = true,
+					staticcheck = true,
+					directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+					semanticTokens = true,
+				},
+			},
+		}
+
+		-- configure pyright using new API
+		vim.lsp.config.pyright = {
+			cmd = { "pyright-langserver", "--stdio" },
+			filetypes = { "python" },
+			root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git" },
+			capabilities = capabilities,
+			settings = {
+				pyright = { autoImportCompletion = true },
+				python = {
+					analysis = {
+						autoSearchPaths = true,
+						diagnosticMode = "openFilesOnly",
+						useLibraryCodeForTypes = true,
+						typeCheckingMode = "off",
+						extraPaths = pyright_extra_paths,
+					},
+				},
+			},
+		}
+
+		-- configure lua_ls using new API
+		vim.lsp.config.lua_ls = {
+			cmd = { "lua-language-server" },
+			filetypes = { "lua" },
+			root_markers = {
+				".luarc.json",
+				".luarc.jsonc",
+				".luacheckrc",
+				".stylua.toml",
+				"stylua.toml",
+				"selene.toml",
+				"selene.yml",
+				".git",
+			},
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					-- make the language server recognize "vim" global
+					diagnostics = {
+						globals = { "vim" },
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+				},
+			},
+		}
+
+		-- configure other servers using new API
+		local simple_servers = {
+			{ name = "html", cmd = { "vscode-html-language-server", "--stdio" }, filetypes = { "html" } },
+			{
+				name = "cssls",
+				cmd = { "vscode-css-language-server", "--stdio" },
+				filetypes = { "css", "scss", "less" },
+			},
+			{
+				name = "tailwindcss",
+				cmd = { "tailwindcss-language-server", "--stdio" },
+				filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+			},
+			{
+				name = "emmet_ls",
+				cmd = { "emmet-ls", "--stdio" },
+				filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+			},
+		}
+
+		for _, server in ipairs(simple_servers) do
+			vim.lsp.config[server.name] = {
+				cmd = server.cmd,
+				filetypes = server.filetypes,
+				capabilities = capabilities,
+			}
+		end
+
+		-- Enable the LSP servers for their respective filetypes
+		vim.lsp.enable({ "gopls", "pyright", "lua_ls", "html", "cssls", "tailwindcss", "emmet_ls" })
 	end,
 }

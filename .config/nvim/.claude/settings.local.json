@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh repo *)",
+      "Bash(gh search *)",
+      "Bash(gh issue *)",
+      "Bash(git config *)",
+      "Bash(git -C /Users/ivan.klishch/.local/share/nvim/lazy/LuaSnip config --get submodule.recurse)",
+      "Bash(git -C /Users/ivan.klishch/.local/share/nvim/lazy/LuaSnip config --get-all status.submodulesummary)"
+    ]
+  }
+}
