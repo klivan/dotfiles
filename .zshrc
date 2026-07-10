@@ -88,6 +88,12 @@ if [[ "$(uname)" == "Darwin" ]]; then
 	source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 	source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
+	if [[ ! -d ~/.zsh/zsh-autosuggestions ]]; then
+		git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+	fi
+	if [[ ! -d ~/.zsh/zsh-syntax-highlighting ]]; then
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+	fi
 	source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 	source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
@@ -106,7 +112,7 @@ fi
 # else
 #   export EDITOR='mvim'
 # fi
-EDITOR='vim'
+export EDITOR=vim
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -146,6 +152,7 @@ alias aurinstall='sudo pacman -U '
 alias find-gpu='ps aux | grep gpu-process | grep'
 alias wiki='tmux attach -t wiki || tmux new -s wiki'
 alias work='tmux attach -t Work || cd ~/dd/dogweb && tmux new -s Work \; split-window -h \; split-window -v \; select-pane -t 1 \; attach'
+alias claude='claude --model="opus[1m]"'
 
 function kill-gpu() {
    find-gpu $1 | egrep -o -e "[0-9]+" | head -n 1 | xargs -p kill
@@ -201,11 +208,17 @@ oathaws() {
 }
 
 prod() {
-    # prod switches to a default branch and updates it with recent changes
-    # Default branch is usually one of prod, main, master etc
-    defaultBranch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
-    git checkout $defaultBranch
-    git pull --rebase
+    # prod switches to the repo's default branch and hard-resets it to origin.
+    # Fetches ONLY the default branch so it never trips over the thousands of
+    # other remote branches. Some of those collide on macOS's case-insensitive
+    # filesystem (e.g. Jansen-w/... vs jansen-w/...), which makes a full
+    # `git fetch` exit non-zero and silently skip the update.
+    local defaultBranch
+    defaultBranch=$(git symbolic-ref --quiet refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+    [ -z "$defaultBranch" ] && defaultBranch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+    git fetch origin "$defaultBranch" || return
+    git checkout "$defaultBranch" || return
+    git reset --hard "origin/$defaultBranch"
 }
 
 push(){
@@ -267,7 +280,5 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
-
-export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
 source ~/.work.sh

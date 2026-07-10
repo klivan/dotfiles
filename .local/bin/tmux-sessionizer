@@ -5,7 +5,24 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/.config ~/Developer ~/Developers/Personal ~/Developers/CopyFromMacbookAir/Personal ~/go/src/github.com/DataDog ~/Documents ~/ -mindepth 1 -maxdepth 1 \( -type l -o -type d \) -print | fzf)
+    # Search roots. The same list is used on every machine; dirs that don't
+    # exist on a given host are skipped, so e.g. the ~/Developers paths simply
+    # yield nothing at work while still working on the personal laptop.
+    roots=(
+        ~/.config
+        ~/Developer
+        ~/Developers/Personal
+        ~/Developers/CopyFromMacbookAir/Personal
+        ~/go/src/github.com/DataDog
+        ~/Documents
+        ~/dd
+        ~/
+    )
+    existing=()
+    for r in "${roots[@]}"; do
+        [[ -d $r ]] && existing+=("$r")
+    done
+    selected=$(find "${existing[@]}" -mindepth 1 -maxdepth 1 \( -type l -o -type d \) -print | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -16,12 +33,12 @@ selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -s "$selected_name" -c "$selected"
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+    tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-tmux switch-client -t $selected_name
+tmux switch-client -t "$selected_name"
