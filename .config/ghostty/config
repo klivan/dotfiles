@@ -15,9 +15,9 @@ macos-option-as-alt = true
 
 cursor-style = block
 
-# Remove unneded title bar
-macos-titlebar-style = hidden
-window-decoration = none
+# Show tabs in an integrated top title bar.
+macos-titlebar-style = tabs
+window-decoration = auto
 
 # theme = GruvboxDarkHard
 # theme = catppuccin-mocha
