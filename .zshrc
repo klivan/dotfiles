@@ -188,7 +188,8 @@ cleanuppythonroot(){
     find . -name '*.pyc' | xargs sudo rm
 }
 
-aur() {
+unalias aur 2>/dev/null
+function aur {
     echo "Installing $1 package from aur"
     git clone https://aur.archlinux.org/$1.git /tmp/$1
     cd /tmp/$1
