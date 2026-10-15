@@ -1,6 +1,7 @@
 [user]
   email = ivan.klishch@datadoghq.com
 	name = Ivan Klishch
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJnK6XCArbLkY5NSoX36h4q675Hvjs+ueHJ2HJ797r3H klishch_git_commit_signing
   ; signingkey = 6E3BEDE996CB8103
 [core]
 	; hooksPath = /usr/local/dd/global_hooks
