@@ -20,7 +20,6 @@ return {
       "prisma",
       "markdown",
       "markdown_inline",
-      "graphql",
       "bash",
       "lua",
       "vim",
