@@ -20,9 +20,10 @@ macos-titlebar-style = tabs
 window-decoration = auto
 
 # theme = GruvboxDarkHard
-# theme = catppuccin-mocha
+# theme = Catppuccin Mocha
 # theme = Monokai Classic
-theme = Gruvbox Material
+# theme = Gruvbox Material
+theme = Atom
 
 # Stop Ghostty when I close everything.
 quit-after-last-window-closed = true
