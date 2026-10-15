@@ -45,6 +45,7 @@ return {
 				"black", -- python formatter
 				"pylint",
 				"golangci-lint",
+				"ruff", -- python linter (used by nvim-lint)
 			},
 		})
 	end,

@@ -122,7 +122,8 @@ return {
 
 		-- configure gopls using new API
 		vim.lsp.config.gopls = {
-			cmd = { "dd-gopls" },
+			-- dd-gopls is the work wrapper; fall back to plain gopls on machines without it
+			cmd = { vim.fn.executable("dd-gopls") == 1 and "dd-gopls" or "gopls" },
 			filetypes = { "go", "gomod", "gowork", "gotmpl" },
 			cmd_env = {
 				GOPLS_DISABLE_MODULE_LOADS = 1,
